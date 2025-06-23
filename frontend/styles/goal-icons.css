@@ -1,0 +1,79 @@
+/* 目标图标样式 */
+.goal-icon-dress {
+    background-image: url('https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-94.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon-wash-face {
+    background-image: url('https://img.alicdn.com/imgextra/i4/O1CN01XCyo0f1kUbvMkLOPM_!!6000000004683-55-tps-200-200.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon-brush-teeth {
+    background-image: url('https://img.alicdn.com/imgextra/i2/O1CN01QLp1Qv1LTjYtOUgTk_!!6000000001293-55-tps-200-200.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon-go-school {
+    background-image: url('https://img.alicdn.com/imgextra/i3/O1CN01FD9Lyd1fbIbnj7q0t_!!6000000004027-55-tps-200-200.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon-back-home {
+    background-image: url('https://img.alicdn.com/imgextra/i2/O1CN01RRW0HG1sDhAT1c7qQ_!!6000000005735-55-tps-200-200.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon-wash-lunchbox {
+    background-image: url('https://img.alicdn.com/imgextra/i3/O1CN01Mn7x8b24zFvRVS6Wq_!!6000000007459-55-tps-200-200.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon-bath {
+    background-image: url('https://img.alicdn.com/imgextra/i3/O1CN01S9zkYC1j3oBZvGPPP_!!6000000004499-55-tps-200-200.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon-toilet {
+    background-image: url('https://img.alicdn.com/imgextra/i2/O1CN01Aqfg6R29AZXRVLqjS_!!6000000008030-55-tps-200-200.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon-nose {
+    background-image: url('https://img.alicdn.com/imgextra/i1/O1CN01OQj1bb1LCKv5QpYJm_!!6000000001258-55-tps-200-200.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon-sleep {
+    background-image: url('https://img.alicdn.com/imgextra/i4/O1CN01Tz7jVQ29rFMUQEA2S_!!6000000008121-55-tps-200-200.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon-default {
+    background-image: url('https://img.alicdn.com/imgextra/i2/O1CN01ZyAlrn1MwaMhqz36G_!!6000000001499-55-tps-200-200.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* 添加更多图标样式... */ 

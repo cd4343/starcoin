@@ -1,0 +1,143 @@
+/* 全局样式 */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* 卡片样式 */
+.card {
+    border: none;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* 按钮样式 */
+.btn {
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+/* 列表样式 */
+.list-group-item {
+    border: none;
+    margin-bottom: 5px;
+    border-radius: 10px !important;
+}
+
+/* 导航栏样式 */
+.nav-tabs {
+    border: none;
+}
+
+.nav-tabs .nav-link {
+    color: var(--secondary-color);
+    border: none;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    background: none;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .card {
+        margin-bottom: 10px;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* 加载动画 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0,0,0,.1);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 表单样式 */
+.form-control {
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+/* 模态框样式 */
+.modal-content {
+    border-radius: 15px;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+/* 星星币样式 */
+.star-balance {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--warning-color);
+}
+
+/* 任务完成动画 */
+.task-complete {
+    text-decoration: line-through;
+    color: var(--secondary-color);
+}
+
+/* 进度条样式 */
+.progress {
+    height: 10px;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+} 

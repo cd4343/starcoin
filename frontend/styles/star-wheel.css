@@ -1,0 +1,472 @@
+/* 基础样式 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f5f7ff;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 70px;
+}
+
+/* 顶部区域样式 */
+.profile-header {
+    background: linear-gradient(135deg, #7367f0, #8e44ad);
+    padding: 16px 20px;
+    color: white;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 0;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.btn-back {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-3px);
+}
+
+.header-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.star-balance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    align-self: center;
+}
+
+.star-balance i {
+    color: #ffd700;
+    margin-right: 8px;
+}
+
+/* 内容区域 */
+.content-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 95%;
+    max-width: 500px;
+    padding: 20px 0;
+}
+
+/* 转盘容器 */
+.wheel-container {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wheel-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.wheel-title h2 {
+    margin: 0 0 5px;
+    color: #7367f0;
+    font-size: 24px;
+}
+
+.wheel-title p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.wheel-wrapper {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 20px 0;
+}
+
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1), 0 0 20px rgba(0,0,0,0.05);
+}
+
+.wheel-item {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    transform-origin: 0% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    padding-left: 50%;
+    box-sizing: border-box;
+}
+
+.wheel-item-content {
+    transform: rotate(60deg);
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: #7367f0;
+    z-index: 10;
+}
+
+.wheel-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cost-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.cost-info i {
+    color: #ffd700;
+    margin-right: 5px;
+}
+
+.btn-spin {
+    background: #7367f0;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(115, 103, 240, 0.3);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.btn-spin i {
+    margin-right: 8px;
+}
+
+.btn-spin:hover {
+    background: #5e50ee;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(115, 103, 240, 0.4);
+}
+
+.btn-spin:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 奖品历史 */
+.prize-history {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.prize-history h3 {
+    margin: 0 0 15px;
+    color: #333;
+    font-size: 18px;
+}
+
+.prize-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.prize-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.prize-item:last-child {
+    border-bottom: none;
+}
+
+.prize-item-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f0f4ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #7367f0;
+    font-size: 18px;
+}
+
+.prize-item-info {
+    flex: 1;
+}
+
+.prize-item-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.prize-item-date {
+    font-size: 12px;
+    color: #999;
+}
+
+.empty-prizes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 150px;
+    color: #999;
+}
+
+.empty-prizes i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.empty-prizes p {
+    margin: 5px 0;
+}
+
+/* 中奖弹窗 */
+.prize-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.prize-modal.active {
+    display: flex;
+}
+
+.prize-modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.prize-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.prize-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.prize-modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+.prize-modal-body {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.prize-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #f0f4ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #7367f0;
+    font-size: 36px;
+}
+
+.prize-name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.prize-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.prize-modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-claim {
+    background: #7367f0;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-claim:hover {
+    background: #5e50ee;
+}
+
+/* 底部导航栏 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #666;
+    font-size: 12px;
+}
+
+.nav-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.nav-item.active {
+    color: #7367f0;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .wheel-wrapper {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .wheel-item {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 768px) {
+    .bottom-nav {
+        max-width: 600px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 12px 12px 0 0;
+    }
+    
+    .profile-header {
+        border-radius: 0 0 20px 20px;
+    }
+} 

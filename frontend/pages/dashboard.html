@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星目标 - 宝贝成长计划</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/goal-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- 添加iconfont图标库链接 - 请替换为您在iconfont.cn生成的实际链接 -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_12345678.css">
+    <style>
+        /* 弹窗样式 */
+        .goal-modal, .custom-goal-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .goal-modal-content, .custom-goal-modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .goal-modal-header, .custom-goal-modal-header {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .goal-modal-header h3, .custom-goal-modal-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .goal-modal-close, .custom-goal-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .goal-modal-body, .custom-goal-modal-body {
+            padding: 15px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+        .custom-goal-modal-footer {
+            padding: 15px;
+            display: flex;
+            justify-content: flex-end;
+            border-top: 1px solid #eee;
+        }
+        
+        .btn-cancel, .btn-save {
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+        
+        .btn-cancel {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-save {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        
+        /* 表单样式 */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .points-input {
+            display: flex;
+            align-items: center;
+        }
+        
+        .points-input button {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            background-color: #f8f9fa;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .points-input input {
+            text-align: center;
+            width: 60px;
+            margin: 0 10px;
+        }
+        
+        .char-counter {
+            text-align: right;
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        
+        /* 目标列表样式 */
+        .goal-template-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .goal-template-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+        
+        .goal-template-info {
+            flex: 1;
+        }
+        
+        .goal-template-title {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        
+        .goal-template-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .goal-template-add {
+            margin-left: 10px;
+        }
+        
+        .btn-add-template {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* 分类标签样式 */
+        .goal-tags-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin-bottom: 15px;
+        }
+        
+        .goal-tag {
+            padding: 5px 15px;
+            border-radius: 20px;
+            background-color: #f8f9fa;
+            margin-right: 10px;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+        
+        .goal-tag.active {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        /* 搜索框样式 */
+        .goal-search-container {
+            margin-bottom: 15px;
+        }
+        
+        .goal-search-box {
+            position: relative;
+        }
+        
+        .goal-search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 1rem;
+        }
+        
+        .goal-search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        
+        /* 添加自定义目标按钮样式 */
+        .add-custom-goal {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .add-custom-goal button {
+            padding: 8px 20px;
+            border-radius: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .add-custom-goal button i {
+            margin-right: 5px;
+        }
+        
+        /* 加载和错误消息样式 */
+        .loading-message, .error-message, .no-goals-message {
+            padding: 20px;
+            text-align: center;
+            color: #6c757d;
+        }
+        
+        .error-message {
+            color: #dc3545;
+        }
+        
+        /* 标题居中样式 */
+        .header-title {
+            text-align: center;
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .btn-back {
+            position: absolute;
+            left: 0;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <div class="header-actions">
+                <button class="btn-back" onclick="window.history.back()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="header-title">星目标</div>
+            </div>
+            
+            <div class="profile-info">
+                <div class="profile-avatar">
+                    <img src="../images/baby-avatar.png" alt="宝贝头像" id="babyAvatar">
+                </div>
+                <div class="profile-details">
+                    <div class="profile-name" id="babyName">morning <span class="emoji">😊</span></div>
+                    <div class="profile-streak">
+                        连续打卡: <span id="streakDays">1</span>天
+                    </div>
+                </div>
+                <div class="profile-stars">
+                    <i class="fas fa-star"></i>
+                    <span id="totalStars">100</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="date-nav">
+            <div class="date-item" data-offset="-2">
+                <div class="date-day">周日</div>
+                <div class="date-date">2</div>
+            </div>
+            <div class="date-item" data-offset="-1">
+                <div class="date-day">周一</div>
+                <div class="date-date">3</div>
+            </div>
+            <div class="date-item active" data-offset="0">
+                <div class="date-day">今天</div>
+                <div class="date-date">4</div>
+            </div>
+            <div class="date-item" data-offset="1">
+                <div class="date-day">明天</div>
+                <div class="date-date">5</div>
+            </div>
+        </div>
+        
+        <!-- 目标完成进度条 -->
+        <div class="goal-progress-container">
+            <div class="goal-progress-info">
+                <span id="goalProgress">0/40</span>
+                <div class="star-count">
+                    <i class="fas fa-star goal-star"></i>
+                    <span id="dailyStars">0</span>
+                </div>
+            </div>
+            <div class="goal-progress-bar-container">
+                <div class="goal-progress-bar" id="goalProgressBar" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="goals-tip">
+                <i class="fas fa-info-circle"></i> 单击查看目标详情
+            </div>
+            <div class="goals-container" id="goalsContainer">
+                <!-- 暂无目标消息 -->
+                <div class="no-goals-message" id="noGoalsMessage" style="display: none;">
+                    <div class="message-content">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>暂无目标管理</h3>
+                        <p>这一天还没有设置任何目标</p>
+                        <button class="btn-add-goal" id="addGoalBtn">
+                            <i class="fas fa-plus"></i>
+                            添加目标
+                        </button>
+                    </div>
+                </div>
+                <!-- 目标列表将在这里动态生成 -->
+            </div>
+            <div class="goals-actions">
+                <button class="btn-primary" id="manageGoalsBtn">目标管理</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 目标管理弹窗 -->
+    <div class="goal-modal" id="goalModal">
+        <div class="goal-modal-content">
+            <div class="goal-modal-header">
+                <h3>目标管理</h3>
+                <button class="goal-modal-close" id="closeGoalModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="goal-modal-body">
+                <div class="goal-search-container">
+                    <div class="goal-search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="goalSearchInput" placeholder="搜索目标...">
+                    </div>
+                </div>
+                
+                <div class="goal-tags-container">
+                    <div class="goal-tag active" data-category="all">全部</div>
+                    <div class="goal-tag" data-category="independent">独立</div>
+                    <div class="goal-tag" data-category="labor">劳动</div>
+                    <div class="goal-tag" data-category="study">学习</div>
+                    <div class="goal-tag" data-category="life">生活</div>
+                    <div class="goal-tag" data-category="interest">兴趣</div>
+                </div>
+                
+                <div class="goal-list" id="goalList">
+                    <!-- 目标列表将通过JS动态生成 -->
+                </div>
+                
+                <div class="add-custom-goal">
+                    <button id="addCustomGoalBtn">
+                        <i class="fas fa-plus"></i>
+                        添加自定义目标
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加自定义目标弹窗 -->
+    <div class="custom-goal-modal" id="customGoalModal">
+        <div class="custom-goal-modal-content">
+            <div class="custom-goal-modal-header">
+                <h3>添加自定义目标</h3>
+                <button class="custom-goal-modal-close" id="closeCustomGoalModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="custom-goal-modal-body">
+                <form id="customGoalForm">
+                    <div class="form-group">
+                        <label for="customGoalTitle">目标名称</label>
+                        <input type="text" id="customGoalTitle" placeholder="例如：早上7点起床" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customGoalCategory">目标类型</label>
+                        <select id="customGoalCategory" required>
+                            <option value="independent">独立</option>
+                            <option value="labor">劳动</option>
+                            <option value="study">学习</option>
+                            <option value="life">生活</option>
+                            <option value="interest">兴趣</option>
+                            <option value="praise">表扬</option>
+                            <option value="criticism">批评</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customGoalPoints">星星数量</label>
+                        <div class="points-input">
+                            <button type="button" id="decreasePoints">-</button>
+                            <input type="number" id="customGoalPoints" value="1" min="1" max="10" required>
+                            <button type="button" id="increasePoints">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customGoalDescription">目标描述（可选）</label>
+                        <textarea id="customGoalDescription" placeholder="添加一些描述和完成标准" maxlength="22"></textarea>
+                        <div class="char-counter"><span id="descCharCount">0</span>/22</div>
+                    </div>
+                </form>
+            </div>
+            <div class="custom-goal-modal-footer">
+                <button class="btn-cancel" id="cancelCustomGoalBtn">取消</button>
+                <button class="btn-save" id="saveCustomGoalBtn">保存目标</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <i class="fas fa-home nav-icon"></i>
+            <span>首页</span>
+        </a>
+        <a href="calendar.html" class="nav-item">
+            <i class="fas fa-calendar-alt nav-icon"></i>
+            <span>星星日历</span>
+        </a>
+        <a href="star-wheel.html" class="nav-item">
+            <i class="fas fa-gift nav-icon"></i>
+            <span>星愿池</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user nav-icon"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <script src="../js/dashboard.js"></script>
+</body>
+</html> 

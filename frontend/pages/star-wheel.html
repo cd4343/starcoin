@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>星愿池 - 抽奖转盘</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/star-wheel.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部区域 -->
+        <div class="profile-header">
+            <div class="header-actions">
+                <button class="btn-back" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="header-title">星愿池</div>
+                <div style="width: 36px;"></div>
+            </div>
+            
+            <div class="star-balance">
+                <i class="fas fa-star"></i>
+                <span id="totalStars">100</span>
+            </div>
+        </div>
+        
+        <!-- 内容区域 -->
+        <div class="content-section">
+            <div class="wheel-container">
+                <div class="wheel-title">
+                    <h2>星愿转盘</h2>
+                    <p>使用星星币抽取心愿奖品</p>
+                </div>
+                
+                <div class="wheel-wrapper">
+                    <div class="wheel" id="wheel">
+                        <!-- 转盘将通过JS动态生成 -->
+                    </div>
+                    <div class="wheel-pointer">
+                        <i class="fas fa-caret-down"></i>
+                    </div>
+                </div>
+                
+                <div class="wheel-controls">
+                    <div class="cost-info">
+                        <i class="fas fa-star"></i>
+                        <span>10</span>
+                    </div>
+                    <button class="btn-spin" id="spinButton">
+                        <i class="fas fa-play"></i>
+                        开始抽奖
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prize-history">
+                <h3>奖品记录</h3>
+                <div class="prize-list" id="prizeList">
+                    <!-- 奖品记录将通过JS动态生成 -->
+                    <div class="empty-prizes">
+                        <i class="fas fa-gift"></i>
+                        <p>还没有抽中奖品</p>
+                        <p>快去转动星愿转盘吧</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 中奖弹窗 -->
+        <div class="prize-modal" id="prizeModal">
+            <div class="prize-modal-content">
+                <div class="prize-modal-header">
+                    <h3>恭喜获得</h3>
+                    <button class="prize-modal-close" id="closePrizeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="prize-modal-body">
+                    <div class="prize-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="prize-name" id="prizeName">神秘礼物</div>
+                    <div class="prize-desc" id="prizeDesc">恭喜你获得了一份神秘礼物！</div>
+                </div>
+                <div class="prize-modal-footer">
+                    <button class="btn-claim" id="claimPrize">领取奖励</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部导航栏 -->
+        <div class="bottom-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home nav-icon"></i>
+                <span>首页</span>
+            </a>
+            <a href="calendar.html" class="nav-item">
+                <i class="fas fa-calendar-alt nav-icon"></i>
+                <span>星星日历</span>
+            </a>
+            <a href="star-wheel.html" class="nav-item active">
+                <i class="fas fa-gift nav-icon"></i>
+                <span>星愿池</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user nav-icon"></i>
+                <span>我的</span>
+            </a>
+        </div>
+    </div>
+    
+    <script src="../js/star-wheel.js"></script>
+</body>
+</html> 

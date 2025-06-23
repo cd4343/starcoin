@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星星日历 - 星目标</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/calendar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .page-header {
+            text-align: center;
+            position: relative;
+            padding: 15px 0;
+        }
+        
+        .page-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            display: inline-block;
+        }
+        
+        .btn-back {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 美化标题栏 -->
+        <header class="page-header">
+            <button class="btn-back" onclick="window.location.href='/'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1><i class="fas fa-calendar-alt"></i> 星星日历</h1>
+        </header>
+
+        <!-- 合并宝贝信息和统计区域 -->
+        <div class="stats-container">
+            <div class="baby-stats-header">
+                <div class="baby-avatar">
+                    <img src="../images/baby-avatar.png" alt="宝贝头像" id="calendarBabyAvatar">
+                </div>
+                <div class="baby-stats-info">
+                    <div class="baby-name" id="calendarBabyName">Morning</div>
+                    <div class="baby-streak">连续打卡: <span id="calendarBabyStreak">1</span>天</div>
+                </div>
+            </div>
+            
+            <!-- 目标进度条 -->
+            <!-- 已移除进度条
+            <div class="goal-progress-bar-wrapper">
+                <div class="goal-progress-info">
+                    <span id="goalProgress">4/7</span>
+                    <div class="star-count-display">
+                        <i class="fas fa-star"></i>
+                        <span id="progressStars">15</span>
+                    </div>
+                </div>
+                <div class="goal-progress-bar-container">
+                    <div class="goal-progress-bar" id="goalProgressBar" style="width: 57%;"></div>
+                </div>
+            </div>
+            -->
+            
+            <h3 class="stats-title">本月统计</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="totalStars">94</div>
+                        <div class="stat-label">总星星数</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="bestDay">31</div>
+                        <div class="stat-label">打卡天数</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button id="prevMonth" class="btn-nav"><i class="fas fa-chevron-left"></i></button>
+                <h2 id="currentMonth">2025年3月</h2>
+                <button id="nextMonth" class="btn-nav"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="weekdays">
+                <div>日</div>
+                <div>一</div>
+                <div>二</div>
+                <div>三</div>
+                <div>四</div>
+                <div>五</div>
+                <div>六</div>
+            </div>
+
+            <div id="calendar" class="calendar-grid">
+                <!-- 日历内容将通过 JavaScript 动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <a href="dashboard.html" class="nav-item">
+            <i class="fas fa-home nav-icon"></i>
+            <span>首页</span>
+        </a>
+        <a href="calendar.html" class="nav-item active">
+            <i class="fas fa-calendar-alt nav-icon"></i>
+            <span>星星日历</span>
+        </a>
+        <a href="star-wheel.html" class="nav-item">
+            <i class="fas fa-gift nav-icon"></i>
+            <span>星愿池</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user nav-icon"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <script src="../js/calendar.js"></script>
+    <script>
+    // 加载月度统计数据后的处理
+    function updateCalendarWithStats(stats) {
+        // 获取所有日历日期元素
+        const calendarDays = document.querySelectorAll('.calendar-day:not(.empty)');
+        
+        // 创建日期到统计数据的映射
+        const statsMap = {};
+        stats.dailyStats.forEach(stat => {
+            const day = new Date(stat.date).getDate();
+            statsMap[day] = stat;
+        });
+        
+        // 遍历所有日期元素
+        calendarDays.forEach(dayElement => {
+            const day = parseInt(dayElement.getAttribute('data-day'));
+            const starCountElement = dayElement.querySelector('.star-count');
+            
+            // 设置星星数量，如果没有记录则显示0
+            if (statsMap[day]) {
+                starCountElement.textContent = statsMap[day].total_stars;
+            } else {
+                starCountElement.textContent = '0';
+            }
+        });
+    }
+    </script>
+</body>
+</html> 

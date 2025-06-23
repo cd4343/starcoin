@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1740466780656",
+    "nickname": "Morning",
+    "gender": "male",
+    "birthDate": "2017-01-17",
+    "stars": 100,
+    "createdAt": "2025-02-25T06:59:40.656Z",
+    "avatar": "/uploads/avatar-1740995076843-740786457.jpg"
+  },
+  {
+    "id": "1740551172256",
+    "nickname": "阿剑",
+    "gender": "male",
+    "birthDate": "2019-06-24",
+    "stars": 500,
+    "createdAt": "2025-02-26T06:26:12.256Z",
+    "avatar": "/uploads/avatar-1740557636070-577190530.jpg"
+  }
+]

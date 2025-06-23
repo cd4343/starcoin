@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建宝贝档案 - 星星积分</title>
+    <link rel="stylesheet" href="../styles/addBaby.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>创建宝贝档案</h1>
+            <p>填写宝贝的基本信息</p>
+        </header>
+
+        <div class="content-box">
+            <form id="addBabyForm" class="baby-form">
+                <div class="form-group">
+                    <label>宝贝昵称</label>
+                    <input type="text" id="nickname" required placeholder="给宝贝起个好听的昵称">
+                </div>
+
+                <div class="form-group">
+                    <label>性别</label>
+                    <div class="gender-selector">
+                        <label class="gender-option">
+                            <input type="radio" name="gender" value="male" checked>
+                            <i class="fas fa-mars"></i>
+                            小王子
+                        </label>
+                        <label class="gender-option">
+                            <input type="radio" name="gender" value="female">
+                            <i class="fas fa-venus"></i>
+                            小公主
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>出生日期</label>
+                    <input type="date" id="birthDate" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="history.back()">
+                        <i class="fas fa-arrow-left"></i>
+                        返回
+                    </button>
+                    <button type="submit" class="btn-save">
+                        <i class="fas fa-check"></i>
+                        创建档案
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/addBaby.js"></script>
+</body>
+</html> 

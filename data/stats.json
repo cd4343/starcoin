@@ -1,0 +1,74 @@
+[
+  {
+    "id": "test-1740466780656-2025-03-18",
+    "babyId": "1740466780656",
+    "date": "2025-03-18",
+    "total_stars": 1,
+    "completed_goals": 1,
+    "total_goals": 2
+  },
+  {
+    "id": "test-1740466780656-2025-03-02",
+    "babyId": "1740466780656",
+    "date": "2025-03-02",
+    "total_stars": 2,
+    "completed_goals": 2,
+    "total_goals": 2
+  },
+  {
+    "id": "test-1740466780656-2025-03-15",
+    "babyId": "1740466780656",
+    "date": "2025-03-15",
+    "total_stars": 4,
+    "completed_goals": 4,
+    "total_goals": 5
+  },
+  {
+    "id": "test-1740466780656-2025-03-01",
+    "babyId": "1740466780656",
+    "date": "2025-03-01",
+    "total_stars": 4,
+    "completed_goals": 4,
+    "total_goals": 4
+  },
+  {
+    "id": "test-1740466780656-2025-03-13",
+    "babyId": "1740466780656",
+    "date": "2025-03-13",
+    "total_stars": 5,
+    "completed_goals": 5,
+    "total_goals": 7
+  },
+  {
+    "id": "test-1740466780656-2025-03-12",
+    "babyId": "1740466780656",
+    "date": "2025-03-12",
+    "total_stars": 2,
+    "completed_goals": 2,
+    "total_goals": 2
+  },
+  {
+    "id": "test-1740551172256-2025-03-15",
+    "babyId": "1740551172256",
+    "date": "2025-03-15",
+    "total_stars": 4,
+    "completed_goals": 4,
+    "total_goals": 5
+  },
+  {
+    "id": "test-1740551172256-2025-03-14",
+    "babyId": "1740551172256",
+    "date": "2025-03-14",
+    "total_stars": 1,
+    "completed_goals": 1,
+    "total_goals": 3
+  },
+  {
+    "id": "test-1740551172256-2025-03-02",
+    "babyId": "1740551172256",
+    "date": "2025-03-02",
+    "total_stars": 5,
+    "completed_goals": 5,
+    "total_goals": 5
+  }
+]

@@ -1,0 +1,1042 @@
+/* 基础样式 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f5f7ff;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 70px;
+}
+
+/* 顶部区域样式优化 */
+.profile-header {
+    background: linear-gradient(135deg, #7367f0, #8e44ad);
+    padding: 16px 20px;
+    color: white;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 0;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btn-back {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-3px);
+}
+
+.header-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    flex: 1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.profile-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin-right: 15px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+    background: white;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-details {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.profile-streak {
+    font-size: 14px;
+    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.profile-stars {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.profile-stars i {
+    color: #ffd700;
+}
+
+/* 日期导航 - 优化尺寸和自适应 */
+.date-nav {
+    display: flex;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 15px auto;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 95%;
+    max-width: 500px;
+}
+
+.date-item {
+    flex: 1;
+    text-align: center;
+    padding: 12px 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-right: 1px solid #f0f0f0;
+}
+
+.date-item:last-child {
+    border-right: none;
+}
+
+.date-day {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.date-date {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.date-item.active {
+    background: #f0f4ff;
+}
+
+.date-item.active .date-day {
+    color: #7367f0;
+}
+
+.date-item.active .date-date {
+    color: #7367f0;
+}
+
+/* 日期导航操作 */
+.date-nav-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto 15px;
+    width: 95%;
+    max-width: 500px;
+}
+
+.date-action {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.date-action:hover {
+    background: #f0f4ff;
+    color: #7367f0;
+    transform: translateY(-2px);
+}
+
+/* 内容区域 */
+.content-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 95%;
+    max-width: 500px;
+}
+
+.goals-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+.empty-goals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 200px;
+    color: #999;
+}
+
+.empty-goals i {
+    font-size: 50px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.empty-goals p {
+    margin: 5px 0;
+}
+
+.goals-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background: #7367f0;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(115, 103, 240, 0.3);
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: #5e50ee;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(115, 103, 240, 0.4);
+}
+
+/* 目标图标样式 */
+.goal-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.goal-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.goal-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 12px;
+    text-align: left;
+}
+
+/* 确保goal-title样式与新的布局兼容 */
+.goal-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 4px;
+    text-align: left;
+}
+
+.goal-category {
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+}
+
+/* 目标项样式调整 */
+.goal-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+}
+
+.goal-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.goal-item:last-child {
+    margin-bottom: 0;
+}
+
+.btn-complete {
+    background: #7367f0;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-complete:hover {
+    background: #5e50ee;
+}
+
+.goal-item.completed {
+    background: #c8e6c9;
+}
+
+/* 目标管理弹窗 */
+.goal-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.goal-modal.active {
+    display: flex;
+}
+
+.goal-modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.goal-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.goal-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.goal-modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+.goal-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.goal-search-container {
+    margin-bottom: 20px;
+}
+
+.goal-search-box {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    border-radius: 25px;
+    padding: 0 15px;
+    overflow: hidden;
+}
+
+.goal-search-box i {
+    color: #999;
+    margin-right: 10px;
+}
+
+.goal-search-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.goal-search-box input:focus {
+    outline: none;
+}
+
+.goal-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.goal-tag {
+    background: #f0f0f0;
+    color: #666;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.goal-tag.active {
+    background: #7367f0;
+    color: white;
+}
+
+.goal-list {
+    margin-bottom: 20px;
+}
+
+.add-custom-goal {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.add-custom-goal button {
+    background: none;
+    border: 2px dashed #ddd;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    color: #999;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.add-custom-goal button:hover {
+    border-color: #7367f0;
+    color: #7367f0;
+}
+
+/* 自定义目标弹窗 */
+.custom-goal-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+}
+
+.custom-goal-modal.active {
+    display: flex;
+}
+
+.custom-goal-modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.custom-goal-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.custom-goal-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.custom-goal-modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+.custom-goal-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.points-input {
+    display: flex;
+    align-items: center;
+}
+
+.points-input button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ddd;
+    background: #f5f5f5;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.points-input button:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+.points-input button:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+.points-input input {
+    width: 60px;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}
+
+.custom-goal-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    gap: 10px;
+}
+
+.btn-cancel {
+    padding: 10px 20px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-cancel:hover {
+    border-color: #999;
+    color: #333;
+}
+
+.btn-save {
+    padding: 10px 20px;
+    background: #7367f0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-save:hover {
+    background: #5e50ee;
+}
+
+/* 底部导航栏 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #666;
+    font-size: 12px;
+}
+
+.nav-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.nav-item.active {
+    color: #7367f0;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .profile-avatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .profile-name {
+        font-size: 18px;
+    }
+    
+    .profile-stars {
+        font-size: 16px;
+        padding: 6px 12px;
+    }
+    
+    .date-day {
+        font-size: 12px;
+    }
+    
+    .date-date {
+        font-size: 16px;
+    }
+    
+    .date-item {
+        padding: 10px 5px;
+    }
+    
+    .goal-modal-content,
+    .custom-goal-modal-content {
+        max-height: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .bottom-nav {
+        max-width: 600px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 12px 12px 0 0;
+    }
+    
+    .profile-header {
+        border-radius: 0 0 20px 20px;
+    }
+    
+    .content-section {
+        max-width: 500px;
+    }
+}
+
+/* 添加底部导航栏适配不同设备的样式 */
+@supports (padding: max(0px)) {
+    .bottom-nav {
+        padding-bottom: max(0px, env(safe-area-inset-bottom));
+        height: calc(56px + env(safe-area-inset-bottom));
+    }
+    
+    body {
+        padding-bottom: calc(70px + env(safe-area-inset-bottom));
+    }
+}
+
+/* 目标完成进度条 */
+.goal-progress-container {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin: 15px auto;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    width: 95%;
+    max-width: 500px;
+}
+
+.goal-progress-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.goal-progress-info > span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+}
+
+.star-count {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.goal-star {
+    color: #ffcc00;
+    font-size: 28px;
+}
+
+#dailyStars {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+.goal-clock {
+    color: #7367f0;
+    font-size: 18px;
+}
+
+.goal-progress-bar-container {
+    height: 10px;
+    background: #e6e9ff;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.goal-progress-bar {
+    height: 100%;
+    background: #7367f0;
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+/* 分类标题 */
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.category-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.btn-add-goal {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-add-goal:hover {
+    background: #7367f0;
+    color: white;
+}
+
+/* 目标列表 */
+.goals-list {
+    padding: 15px;
+}
+
+/* 目标卡片 */
+.goal-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.goal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.goal-card-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.goal-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 12px;
+}
+
+.goal-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 4px;
+    text-align: left;
+}
+
+.goal-description {
+    font-size: 12px;
+    color: #666;
+    max-width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.goal-rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating-placeholder {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    font-size: 24px;
+}
+
+.rating-stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.rating-stars.positive {
+    background-color: #fff9e6;
+    color: #ffcc00;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.rating-stars.negative {
+    background-color: #ffebeb;
+    color: #ff6b6b;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.rating-stars i {
+    margin-right: 4px;
+    font-size: 22px;
+}
+
+.star-value {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* 字符计数器 */
+.char-counter {
+    text-align: right;
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+}
+
+.goal-card.completed {
+    background-color: #f0f8ff;
+    border-left: 4px solid #7367f0;
+}
+
+.goal-card.completed .goal-title {
+    color: #7367f0;
+    font-weight: 600;
+}
+
+.goals-tip {
+    background-color: #f8f9fa;
+    border-left: 4px solid #7367f0;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.goals-tip i {
+    color: #7367f0;
+    font-size: 16px;
+}
+
+.no-goals-message {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.no-goals-message i {
+    font-size: 48px;
+    color: #7367f0;
+    margin-bottom: 16px;
+}
+
+.no-goals-message h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.no-goals-message p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.btn-add-goal {
+    background: #7367f0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-add-goal:hover {
+    background: #5e52d9;
+    transform: translateY(-2px);
+}
+
+.btn-add-goal i {
+    font-size: 16px;
+    color: white;
+    margin: 0;
+}
+
+.goals-container {
+    display: block;
+    padding: 20px;
+} 

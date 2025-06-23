@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新目标 - 星目标</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/goal-detail.css">
+    <link rel="stylesheet" href="../styles/goal-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_12345678.css">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <button class="btn-back" onclick="window.history.back()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1>新目标</h1>
+        </header>
+
+        <div class="goal-detail">
+            <div class="goal-icon-container">
+                <div class="goal-icon" id="goalIcon">
+                    <img src="../images/goals/dress.png" alt="目标图标" id="goalIconImage">
+                    <div class="icon-edit-btn" id="iconEditBtn">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-title-container">
+                <input type="text" id="goalTitle" value="自己穿衣服" placeholder="输入目标名称">
+            </div>
+            
+            <div class="goal-description-container">
+                <textarea id="goalDescription" placeholder="目标描述（例`30分钟以上`）" maxlength="100"></textarea>
+                <div class="char-counter"><span id="charCount">0</span>/100</div>
+            </div>
+        </div>
+
+        <div class="goal-settings">
+            <div class="setting-section">
+                <h2>评分方式</h2>
+                <div class="score-type-container">
+                    <div class="score-type-label">自由评分</div>
+                </div>
+                
+                <div class="star-rating" id="starRating">
+                    <div class="star-option">
+                        <i class="far fa-frown"></i>
+                    </div>
+                    <div class="star-option">
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="star-option">
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="star-option">
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="star-option">
+                        <i class="far fa-question-circle"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="setting-section">
+                <h2>选择分类</h2>
+                <div class="category-grid">
+                    <div class="category-option active" data-category="independent">独立</div>
+                    <div class="category-option" data-category="labor">劳动</div>
+                    <div class="category-option" data-category="study">学习</div>
+                    <div class="category-option" data-category="life">生活</div>
+                    <div class="category-option" data-category="interest">兴趣</div>
+                    <div class="category-option" data-category="praise">表扬</div>
+                    <div class="category-option" data-category="criticism">批评</div>
+                </div>
+            </div>
+            
+            <div class="setting-section">
+                <h2>打卡频次</h2>
+                <div class="frequency-grid">
+                    <div class="frequency-option" data-day="1">周一</div>
+                    <div class="frequency-option" data-day="2">周二</div>
+                    <div class="frequency-option" data-day="3">周三</div>
+                    <div class="frequency-option" data-day="4">周四</div>
+                    <div class="frequency-option" data-day="5">周五</div>
+                    <div class="frequency-option" data-day="6">周六</div>
+                    <div class="frequency-option" data-day="0">周日</div>
+                    <div class="frequency-option" data-day="holiday">假期</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="save-btn-container">
+        <button id="saveGoalBtn">保存</button>
+    </div>
+
+    <!-- 图片上传弹窗 -->
+    <div class="upload-modal" id="uploadModal">
+        <div class="upload-modal-content">
+            <div class="upload-modal-header">
+                <h3>更换图标</h3>
+                <button class="upload-modal-close" id="closeUploadModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="upload-modal-body">
+                <div class="upload-options">
+                    <div class="upload-option" id="takePhotoBtn">
+                        <i class="fas fa-camera"></i>
+                        <span>拍照</span>
+                    </div>
+                    <div class="upload-option" id="choosePhotoBtn">
+                        <i class="fas fa-image"></i>
+                        <span>从相册选择</span>
+                    </div>
+                </div>
+                
+                <div class="image-preview-container" id="imagePreviewContainer" style="display: none;">
+                    <div class="image-preview">
+                        <img id="imagePreview" src="" alt="预览">
+                    </div>
+                    <div class="image-preview-controls">
+                        <button id="cancelPreviewBtn">取消</button>
+                        <button id="confirmImageBtn">确认</button>
+                    </div>
+                </div>
+                
+                <input type="file" id="photoInput" accept="image/*" style="display: none;">
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/goal-detail.js"></script>
+</body>
+</html> 

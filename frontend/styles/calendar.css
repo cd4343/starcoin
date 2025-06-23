@@ -1,0 +1,484 @@
+/* 基础样式 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #f5f7ff;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 15px;
+  min-height: 100vh;
+}
+
+/* 美化标题栏 */
+.page-header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #7367f0, #8e44ad);
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 22px;
+  flex: 1;
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn-back {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.btn-back:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-3px);
+}
+
+/* 合并宝贝信息和统计区域 */
+.stats-container {
+  background: white;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 0 auto 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.baby-stats-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #eee;
+}
+
+.baby-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #7367f0;
+  margin-right: 15px;
+  flex-shrink: 0;
+  background: white;
+  box-shadow: 0 3px 8px rgba(115, 103, 240, 0.2);
+}
+
+.baby-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.baby-stats-info {
+  flex: 1;
+}
+
+.baby-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.baby-streak {
+  font-size: 14px;
+  background: #f0f0ff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  color: #7367f0;
+  font-weight: 500;
+}
+
+.stats-title {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 12px 0;
+  text-align: left;
+  font-weight: 500;
+  padding-left: 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 0;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #7367f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 3px 8px rgba(115, 103, 240, 0.3);
+}
+
+.stat-info {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* 日历容器 */
+.calendar-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f5f5ff;
+  border-bottom: 1px solid #eee;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.btn-nav {
+  background: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #7367f0;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+
+.btn-nav:hover {
+  background: #7367f0;
+  color: white;
+  transform: scale(1.05);
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  background: #f9f9f9;
+  padding: 10px 0;
+  font-weight: 500;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: #eee;
+  padding: 1px;
+}
+
+.calendar-day {
+  background: white;
+  aspect-ratio: 1;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.calendar-day:hover {
+  background: #f0f4ff;
+}
+
+.calendar-day.other-month {
+  opacity: 0.5;
+}
+
+.calendar-day.today {
+  background: #e6f7ff;
+}
+
+.calendar-day.selected {
+  background: #7367f0;
+  color: white;
+  transform: scale(0.95);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.5);
+}
+
+.day-number {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.day-star {
+  margin-top: auto;
+  text-align: center;
+}
+
+.day-star i {
+  color: #ffd700;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.calendar-day:hover .day-star i {
+  transform: scale(1.2) rotate(10deg);
+  color: #ffc107;
+}
+
+.calendar-day.selected .day-star i {
+  color: #fff;
+  transform: scale(1.3);
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+}
+
+.calendar-day.today .day-star i {
+  color: #ff9800;
+}
+
+/* 添加星星数量样式 */
+.star-count {
+  font-size: 10px;
+  color: #666;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.calendar-day.selected .star-count {
+  color: #fff;
+}
+
+/* 底部导航 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #666;
+  font-size: 12px;
+}
+
+.nav-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.nav-item.active {
+  color: #7367f0;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .stat-card {
+    padding: 12px;
+  }
+  
+  .stat-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .stat-value {
+    font-size: 22px;
+  }
+  
+  .stat-label {
+    font-size: 11px;
+  }
+  
+  .calendar-day {
+    padding: 5px;
+  }
+  
+  .day-number {
+    font-size: 12px;
+  }
+  
+  .baby-avatar {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .baby-name {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-bottom: 60px;
+  }
+  
+  .bottom-nav {
+    max-width: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .stats-container, .calendar-container {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .stat-card {
+    padding: 15px 20px;
+  }
+  
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    margin-right: 15px;
+  }
+  
+  .stat-value {
+    font-size: 30px;
+  }
+}
+
+/* 目标进度条 */
+.goal-progress-bar-wrapper {
+  margin: 15px 0 20px;
+  padding: 0;
+  background-color: #f8f9ff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.goal-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.goal-progress-info > span {
+  font-size: 15px;
+  font-weight: 500;
+  color: #666;
+}
+
+.star-count-display {
+  display: flex;
+  align-items: center;
+}
+
+.star-count-display i {
+  color: #ffd700;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.star-count-display span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.goal-progress-bar-container {
+  height: 10px;
+  background-color: #e6e9ff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.goal-progress-bar {
+  height: 100%;
+  background-color: #7367f0;
+  border-radius: 20px;
+  transition: width 0.3s ease;
+} 

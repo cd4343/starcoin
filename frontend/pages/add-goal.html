@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加目标 - 星目标</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/goal-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            position: relative;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .header-title {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .btn-back {
+            position: absolute;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .search-bar {
+            padding: 15px;
+            background-color: #fff;
+            margin-bottom: 1px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            background-color: #f5f5f5;
+            font-size: 16px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%239e9e9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>');
+            background-repeat: no-repeat;
+            background-position: 15px center;
+        }
+        
+        .category-tabs {
+            display: flex;
+            overflow-x: auto;
+            padding: 0 10px;
+            background-color: #fff;
+            margin-bottom: 15px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .category-tab {
+            flex: 0 0 auto;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #666;
+            position: relative;
+            white-space: nowrap;
+        }
+        
+        .category-tab.active {
+            color: #7b68ee;
+            font-weight: 500;
+        }
+        
+        .category-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 3px;
+            background-color: #7b68ee;
+            border-radius: 3px;
+        }
+        
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 0 15px;
+        }
+        
+        .goal-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .goal-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background-color: #ffe79e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        
+        .goal-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .goal-title {
+            font-size: 14px;
+            color: #333;
+            margin: 0;
+        }
+        
+        .category-independent .goal-icon {
+            background-color: #ffe79e;
+        }
+        
+        .category-labor .goal-icon {
+            background-color: #c9f6cd;
+        }
+        
+        .category-study .goal-icon {
+            background-color: #b4e7f8;
+        }
+        
+        .category-life .goal-icon {
+            background-color: #ffd6e0;
+        }
+        
+        .category-interest .goal-icon {
+            background-color: #d4c8fb;
+        }
+        
+        .category-praise .goal-icon {
+            background-color: #ffd6e0;
+        }
+        
+        .category-criticism .goal-icon {
+            background-color: #ffcc99;
+        }
+        
+        .footer {
+            margin-top: auto;
+            padding: 20px;
+        }
+        
+        .custom-add-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #7b68ee;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .custom-add-btn i {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .goals-count {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <button class="btn-back" onclick="window.history.back()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="header-title">添加目标</div>
+        </header>
+        
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="搜索目标...">
+        </div>
+        
+        <div class="category-tabs">
+            <div class="category-tab active" data-category="independent">独立</div>
+            <div class="category-tab" data-category="labor">劳动</div>
+            <div class="category-tab" data-category="study">学习</div>
+            <div class="category-tab" data-category="life">生活</div>
+            <div class="category-tab" data-category="interest">兴趣</div>
+            <div class="category-tab" data-category="praise">表扬</div>
+            <div class="category-tab" data-category="criticism">批评</div>
+        </div>
+        
+        <div class="goals-grid">
+            <!-- 独立类目标 -->
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-dress.png" alt="自己穿衣服">
+                </div>
+                <p class="goal-title">自己穿衣服</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-wash.png" alt="自己洗漱">
+                </div>
+                <p class="goal-title">自己洗漱</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/brush-teeth.png" alt="早晚刷牙">
+                </div>
+                <p class="goal-title">早晚刷牙</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-school.png" alt="自己上学">
+                </div>
+                <p class="goal-title">自己上学</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-home.png" alt="自己放学回家">
+                </div>
+                <p class="goal-title">自己放学回家</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-lunchbox.png" alt="自己洗饭盒">
+                </div>
+                <p class="goal-title">自己洗饭盒</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-bath.png" alt="自己洗澡">
+                </div>
+                <p class="goal-title">自己洗澡</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-toilet.png" alt="自己上厕所">
+                </div>
+                <p class="goal-title">自己上厕所</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-shoes.png" alt="自己系鞋带">
+                </div>
+                <p class="goal-title">自己系鞋带</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/clean-nose.png" alt="擤鼻子">
+                </div>
+                <p class="goal-title">擤鼻子</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-buttocks.png" alt="自己擦屁股">
+                </div>
+                <p class="goal-title">自己擦屁股</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-feet.png" alt="每天自己洗脚">
+                </div>
+                <p class="goal-title">每天自己洗脚</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-medicine.png" alt="自己吃药">
+                </div>
+                <p class="goal-title">自己吃药</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/self-socks.png" alt="自己穿鞋袜">
+                </div>
+                <p class="goal-title">自己穿鞋袜</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/hygiene.png" alt="讲究个人卫生">
+                </div>
+                <p class="goal-title">讲究个人卫生</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/nose-wash.png" alt="洗鼻子">
+                </div>
+                <p class="goal-title">洗鼻子</p>
+            </div>
+            
+            <div class="goal-card" data-category="independent">
+                <div class="goal-icon">
+                    <img src="../images/goals/nap.png" alt="贴嘴巴">
+                </div>
+                <p class="goal-title">贴嘴巴</p>
+            </div>
+        </div>
+        
+        <div class="goals-count">共 17 个目标</div>
+        
+        <div class="footer">
+            <button class="custom-add-btn">
+                <i class="fas fa-plus-circle"></i>
+                自定义添加
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取URL参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const babyId = urlParams.get('babyId');
+            const dateStr = urlParams.get('date');
+            
+            // 设置分类标签点击事件
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有标签的active类
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    // 给当前标签添加active类
+                    this.classList.add('active');
+                    
+                    // 获取当前分类
+                    const category = this.dataset.category;
+                    
+                    // 更新目标卡片显示
+                    updateGoalCards(category);
+                    
+                    // 更新目标数量
+                    updateGoalsCount(category);
+                });
+            });
+            
+            // 设置目标卡片点击事件
+            const goalCards = document.querySelectorAll('.goal-card');
+            goalCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // 获取目标信息
+                    const category = this.dataset.category;
+                    const title = this.querySelector('.goal-title').textContent;
+                    
+                    // 添加目标
+                    addGoal(babyId, dateStr, title, category);
+                });
+            });
+            
+            // 设置自定义添加按钮点击事件
+            const customAddBtn = document.querySelector('.custom-add-btn');
+            if (customAddBtn) {
+                customAddBtn.addEventListener('click', function() {
+                    // 跳转到自定义添加页面
+                    window.location.href = `custom-goal.html?babyId=${babyId}&date=${dateStr}`;
+                });
+            }
+            
+            // 设置搜索框事件
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    filterGoals(searchTerm);
+                });
+            }
+            
+            // 初始化显示独立分类的目标
+            updateGoalCards('independent');
+            updateGoalsCount('independent');
+        });
+        
+        // 更新目标卡片显示
+        function updateGoalCards(category) {
+            const goalCards = document.querySelectorAll('.goal-card');
+            goalCards.forEach(card => {
+                if (card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // 更新目标数量
+        function updateGoalsCount(category) {
+            const visibleCards = document.querySelectorAll(`.goal-card[data-category="${category}"]`);
+            const countElement = document.querySelector('.goals-count');
+            if (countElement) {
+                countElement.textContent = `共 ${visibleCards.length} 个目标`;
+            }
+        }
+        
+        // 筛选目标
+        function filterGoals(searchTerm) {
+            const goalCards = document.querySelectorAll('.goal-card');
+            let visibleCount = 0;
+            
+            goalCards.forEach(card => {
+                const title = card.querySelector('.goal-title').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // 更新目标数量
+            const countElement = document.querySelector('.goals-count');
+            if (countElement) {
+                countElement.textContent = `共 ${visibleCount} 个目标`;
+            }
+        }
+        
+        // 添加目标
+        async function addGoal(babyId, dateStr, title, category) {
+            try {
+                // 构建目标数据
+                const goalData = {
+                    title: title,
+                    category: category,
+                    date: dateStr,
+                    stars: 1,
+                    isPositive: true,
+                    completed: false
+                };
+                
+                console.log('添加目标:', goalData);
+                
+                // 发送请求
+                const response = await fetch(`/api/babies/${babyId}/goals`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(goalData)
+                });
+                
+                if (response.ok) {
+                    // 添加成功，返回仪表板
+                    window.location.href = `dashboard.html?babyId=${babyId}&date=${dateStr}`;
+                } else {
+                    const error = await response.text();
+                    throw new Error(`添加目标失败: ${error}`);
+                }
+            } catch (error) {
+                console.error('添加目标失败:', error);
+                alert('添加目标失败，请重试');
+            }
+        }
+    </script>
+</body>
+</html> 
